@@ -6,4 +6,4 @@
 uostime 강의 두 번째 시간 <br>
 ###서버 사이드 렌더링 
 <br>
-[제제블로그]https://blog.naver.com/thwjd2717/222039697079
+제제블로그(https://blog.naver.com/thwjd2717/222039697079)
