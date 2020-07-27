@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- views 내에 있어서 ./안써도 ㄱㅊ -->
+    <!-- 같은 폴더인 views 내에 있어서 ./안써도 ㄱㅊ -->
     <%- include('./header.ejs')%> 
     <h1>
         hello world
@@ -22,8 +22,10 @@
 
         <%= id %>
         나는 <%= age %>살이다.
+        <!-- <%= : 안에 있는 내용 그대로 출력 -->
         <% if (1 == 1) { %>
             <%= Date.now()  %>ms hh
+            <!-- ms hh는 문법이 아니라 그냥 단어 -->
             <% } %>
     <!-- p는 문단 -->
 </body>
