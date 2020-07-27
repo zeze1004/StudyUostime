@@ -7,8 +7,70 @@
 </head>
 <body>
     <!-- input은 안닫아도 ㅇㅋㅇㅋ -->
-    <input type="text">
-    <button>send a message</button>
-    
+    <input id="my_input" type="text">
+    <!-- 버튼 id로 객체 설정 -->
+<!-- 저장하는 버튼 -->
+    <button id="my_button">send a message</button>  
+<!-- 찾는 버튼 -->
+    <button id="my_button_find">find a message</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        /*
+        버튼 객체가 클릭되면 input 객체의 값을 서버로 보내자
+        */
+    //   id가 my_button인 객체가 리턴               
+        //$("#my_button").remove : 함수처럼 사용할 수 있음
+        // 버튼을 누르면 일어나는 이벤트를 jquery로 쉽게 쓰기
+        $("#my_button").click(function (){
+            //버튼 객체가 클릭되면 input 객체의 값을 서버로 보내자
+            alert("click 되었다.");
+            //input 객체의 값을 보냄 :.val: 매개변수 return 됨
+          /*
+            var i; //권장하지 않는 선언법
+            왜냐면 var i = 3; var i = 5; 오류 ㄴㄴ
+            let i; //var 대체하는 선언법
+            const i; //상수, 한 번 선정되면 안바뀐다.
+            */
+           //value에 my_input의 객체 값 넘김
+            let value = $("#my_input").val();
+
+            //서버로 보내자
+            //서버한테 요청, 응답
+
+            // Index.js의 req.body.message의 body
+            $.ajax({
+                    // key: value,
+                    // key2: value2, //json 형태
+                    //url,data,method,success 모두 key값
+                    url: '/message', //localhost:8080/message
+                    data: {
+                        //data도 json으로 넘겨줌
+                        message: value
+                        
+                    },
+                    // method의 값이 post로
+                    method: 'POST', //RESTful API 개념을 알자
+                    // 서버 응답 받기(서버가 응답 받으면 이 함수 쓴다: 비동기적 함수?)
+                    success: function(response) {
+                        alert(response);
+                    }
+                });
+        }); 
+
+        $("#my_button_find").click(function (){
+           //서버한테 요청, 응답
+            let value = $("#my_input").val();
+
+            $.ajax({
+                    method: 'GET', //RESTful API 개념을 알자
+                    url: '/message',
+                    success: function(response) {
+                        alert(response);
+                    }
+                });
+        }); 
+    </script>
+
 </body>
 </html>
